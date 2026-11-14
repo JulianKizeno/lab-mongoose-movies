@@ -11,7 +11,7 @@ const path         = require('path');
 
 
 mongoose
-  .connect('mongodb://localhost/mongoose-Movies-Exercise', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost/mongoose-Movies-Exercise', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -32,7 +32,7 @@ app.use(cookieParser());
 
 // Express View engine setup
 
-app.use(require('node-sass-middleware')({
+app.use(require("./security/sass-middleware.js")({
   src:  path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   sourceMap: true

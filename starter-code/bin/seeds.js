@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Celebrity = require('../models/celebrity')
 const Movie     = require('../models/movie')
 const dbName = "mongoose-Movies-Exercise";
-mongoose.connect(`mongodb://localhost/${dbName}`, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/${dbName}`, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // const celebrities = [
 //     {
